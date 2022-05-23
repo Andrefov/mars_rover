@@ -27,5 +27,5 @@ void get_velocity_range();
 int get_status();
 void set_status(enum rover_state rover_);
 
-char 
+
 

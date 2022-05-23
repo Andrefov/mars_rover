@@ -1,10 +1,11 @@
 #include "rover.h"
 
+
+unsigned char bat;
+unsigned int velocity;
+rover_state;
+const char* name;
 float temp;
-static unsigned char bat;
-static unsigned int velocity;
-static rover_state;
-static const char* name;
 
 void rover_init(){
 	temp = 210;
