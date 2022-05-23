@@ -11,6 +11,7 @@ void rover_init(){
 	bat = 99;
 	velocity = 5;
 	rover_state = exploring;
+	name = "internet explorer";
 }
 
 
