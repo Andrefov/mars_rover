@@ -1,70 +1,86 @@
 #include "rover.h"
 
 
-unsigned char bat;
-unsigned int velocity;
-rover_state;
-const char* name;
-float temp;
+static unsigned char bat;
+static unsigned int velocity;
+enum rover_state status;
+static char* name;
+static float temp;
 
 void rover_init(){
 	temp = 210;
 	bat = 99;
 	velocity = 5;
-	rover_state = exploring;
+	status = exploring;
 	name = "internet explorer";
 }
 
 
-float get_temp(){
+float rover_get_temp(){
 	return temp;
 }
-void set_temp(float temp_){
+void rover_set_temp(float temp_){
 	temp = temp_;
 }
 
 
-int get_bat(){
+int rover_get_bat(){
 	return bat;
 }
-void set_bat(int bat_){
+void rover_set_bat(int bat_){
 	bat = bat_;
 }
 
 
-int get_velocity(){
+int rover_get_velocity(){
 	return velocity;
 }
-void set_velocity(int velocity_){
+void rover_set_velocity(int velocity_){
 	velocity = velocity_;
 }
 
 
-int get_temp_size(){
+int rover_get_temp_size(){
 	return sizeof(temp);
 }
-int get_bat_size(){
+int rover_get_bat_size(){
 	return sizeof(bat);
 }
-int get_velocity_size(){
+int rover_get_velocity_size(){
 	return sizeof(velocity);
 }
 
-void get_temp_range(){
+
+void rover_get_temp_range(){
 
 }
-void get_bat_range(){
+void rover_get_bat_range(){
 
 }
-void get_velocity_range(){
-
-}
-
-int get_status(){
-	return rover_state;
-}
-void set_status(enum rover_state status_){
-	rover_state = status_;
+void rover_get_velocity_range(){
 
 }
 
+
+char* rover_get_status() {
+	switch (status) {
+	case exploring:
+		return "exploring";
+	case sampling:
+		return "sampling";
+	case returning:
+		return "returning";
+	case idle:
+		return "idle";
+	}
+}
+void rover_set_status(enum rover_state status_){
+	status = status_;
+}
+
+char *rover_get_name() {
+	return name;
+}
+void rover_set_name(char* name_) {
+	name = name_;
+}

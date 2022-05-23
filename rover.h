@@ -7,25 +7,28 @@ enum rover_state{
 
 void rover_init();
 
-float get_temp();
-void set_temp(float temp_);
+float rover_get_temp();
+void rover_set_temp(float temp_);
 
-int get_bat();
-void set_bat(int bat_);
+int rover_get_bat();
+void rover_set_bat(int bat_);
 
-int get_velocity();
-void set_velocity(int velocity_);
+int rover_get_velocity();
+void rover_set_velocity(int velocity_);
 
-int get_temp_size();
-int get_velocity_size();
-int get_bat_size();
+int rover_get_temp_size();
+int rover_get_velocity_size();
+int rover_get_bat_size();
 
-void get_temp_range();
-void get_bat_range();
-void get_velocity_range();
+void rover_get_temp_range();
+void rover_get_bat_range();
+void rover_get_velocity_range();
 
-int get_status();
-void set_status(enum rover_state rover_);
+char* rover_get_status();
+void rover_set_status(enum rover_state rover_);
+
+char* rover_get_name();
+void rover_set_name(char* name_);
 
 
 
