@@ -1,4 +1,5 @@
 #include "rover.h"
+#include "string.h"
 
 
 static unsigned char bat;
@@ -20,15 +21,33 @@ void rover_init(){
 float rover_get_temp(){
 	return temp;
 }
-void rover_set_temp(float temp_){
-	temp = temp_;
+int rover_set_temp(float temp_) {
+	float temp_a = temp_;
+	temp_a *= 100;
+	temp_a= (int)temp_a;
+	if (temp_a > -27315 && temp_a <=20000){
+		temp = temp_;
+		return 0;
+	}
+	else
+		return -1;
 }
 
 
 int rover_get_bat(){
 	return bat;
 }
-void rover_set_bat(int bat_){
+int rover_set_bat(int bat_){
+	if (bat_ >= 0 && bat_ <= 100) {
+		bat = bat_;
+		return 0;
+	}
+	else if (bat_ == 0) {
+		rover_set_status(idle);
+		return 0;
+	}
+	else
+		return -1;
 	bat = bat_;
 }
 
@@ -38,10 +57,17 @@ int rover_get_velocity(int *direction_, int *magnitude_) {
 	*magnitude_ = velocity.magnitude;
 	return 0;
 }
-void rover_set_velocity(int direction_, int magnitude_){
-	velocity.direction = direction_;
-	velocity.magnitude = magnitude_;
-	;
+int rover_set_velocity(int direction_, int magnitude_) {
+	if (direction_ >= 0 && direction_ <= 359) {
+		velocity.direction = direction_;
+		return 0;
+	}
+	else if (magnitude_ >= 0 && magnitude_ <= 50) {
+		velocity.magnitude = magnitude_;
+		return 0;
+	}
+	else return -1;
+		
 }
 
 
@@ -86,6 +112,11 @@ void rover_set_status(enum rover_state status_){
 char *rover_get_name() {
 	return name;
 }
-void rover_set_name(char* name_) {
-	name = name_;
+int rover_set_name(char* name_) {
+	if ((strlen(name_) - 1) > 0 && (strlen(name_) - 1) <= 20) {
+		name = name_;
+		return 0;
+	}
+	else
+		return -1;
 }

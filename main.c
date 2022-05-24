@@ -34,11 +34,13 @@ int main() {
 		}
 
 		if (strcmp(line, "help") == 0 || strcmp(line, "?") == 0) {
-			printf("temp      <[--get]|--set> min -273.15 C, max 200 C\n");
-			printf("bat       <[--get]|--set> min 0, max 100\n");
-			printf("velocity  <[--get]|--set> min direction 0, max 359, min speed 0, max 50-\n");
-			printf("name      <[--get]|--set>\n");
-			printf("status    <[--get]|--set> exploring, sampling, returning, idle\n");
+			printf("temp      <[--get]|--set> min -273.15 C, max 200 C.\n");
+			printf("bat       <[--get]|--set> min 0%, max 100%.\n");
+			printf("velocity  <[--get]|\n");
+			printf("speed     <[--get]|--set> min speed 0, max 50-\n");
+			printf("direction <[--get]|--set> min  0, max 359.\n");
+			printf("name      <[--get]|--set> min characters 1, max 20.\n");
+			printf("status    <[--get]|--set> exploring, sampling, returning, idle.\n");
 			printf("exit\n");
 		}
 		else if (strncmp(line, "temp", 4) == 0)
@@ -47,6 +49,10 @@ int main() {
 			shell_bat(line + 3);
 		else if (strncmp(line, "velocity", 8) == 0)
 			shell_velocity(line + 8);
+		else if (strncmp(line, "speed", 5) == 0)
+			shell_speed(line + 5);
+		else if (strncmp(line, "direction", 9) == 0)
+			shell_direction(line + 9);
 		else if (strncmp(line, "name", 4) == 0)
 			shell_name(line + 4);
 		else if (strncmp(line, "status", 6) == 0)
