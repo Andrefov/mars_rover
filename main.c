@@ -34,9 +34,9 @@ int main() {
 		}
 
 		if (strcmp(line, "help") == 0 || strcmp(line, "?") == 0) {
-			printf("temp      <[--get]|--set>\n");
-			printf("bat       <[--get]|--set>\n");
-			printf("velocity  <[--get]|--set> 0 -\n");
+			printf("temp      <[--get]|--set> min -273.15 C, max 200 C\n");
+			printf("bat       <[--get]|--set> min 0, max 100\n");
+			printf("velocity  <[--get]|--set> min direction 0, max 359, min speed 0, max 50-\n");
 			printf("name      <[--get]|--set>\n");
 			printf("status    <[--get]|--set> exploring, sampling, returning, idle\n");
 			printf("exit\n");

@@ -5,6 +5,8 @@ enum rover_state{
 	idle,
 };
 
+struct vector { unsigned int direction; unsigned int magnitude; };
+
 void rover_init();
 
 float rover_get_temp();

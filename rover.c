@@ -2,15 +2,16 @@
 
 
 static unsigned char bat;
-static unsigned int velocity;
+struct vector velocity;
 enum rover_state status;
 static char* name;
 static float temp;
 
 void rover_init(){
 	temp = 210;
+	velocity.direction = 0;
+	velocity.magnitude = 25;
 	bat = 99;
-	velocity = 5;
 	status = exploring;
 	name = "internet explorer";
 }
@@ -32,11 +33,15 @@ void rover_set_bat(int bat_){
 }
 
 
-int rover_get_velocity(){
-	return velocity;
+int rover_get_velocity(int *direction_, int *magnitude_) {
+	*direction_ = velocity.direction;
+	*magnitude_ = velocity.magnitude;
+	return 0;
 }
-void rover_set_velocity(int velocity_){
-	velocity = velocity_;
+void rover_set_velocity(int direction_, int magnitude_){
+	velocity.direction = direction_;
+	velocity.magnitude = magnitude_;
+	;
 }
 
 

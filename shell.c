@@ -32,8 +32,12 @@ void shell_velocity(const char* args)
 		rover_set_velocity(atoi(args));
 		return;
 	}
-
-	printf("  velocity: %d\n", rover_get_velocity());
+	int * direction_;
+	direction_ = 0;
+	int * magnitude_;
+	magnitude_ = 0;
+	rover_get_velocity(direction_, magnitude_);
+	printf("  velocity:%d km\\h, direction: %d degrees\n", direction_, magnitude_ );
 }
 
 void shell_name(const char* args)
@@ -51,17 +55,25 @@ void shell_status(const char* args)
 {
 	if (strncmp(args, "--set", 5) == 0) {
 		args += strlen("--set") + 1;
-		if (strcmp(args, "exploring") == 0)
+		if (strcmp(args, "exploring") == 0){
 			rover_set_status(exploring);
+			rover_set_velocity(-1, 25);
+		}
 
-		else if (strcmp(args, "sampling") == 0)
+		else if (strcmp(args, "sampling") == 0) {
 			rover_set_status(sampling);
+			rover_set_velocity(-1, 0);
+		}
 
-		else if (strcmp(args, "returning") == 0)
+		else if (strcmp(args, "returning") == 0) {
 			rover_set_status(returning);
+			rover_set_velocity(-1, 25);
+		}
 
-		else if (strcmp(args, "idle") == 0)
+		else if (strcmp(args, "idle") == 0) {
 			rover_set_status(idle);
+			rover_set_velocity(-1, 0);
+		}
 		return;
 	}
 
