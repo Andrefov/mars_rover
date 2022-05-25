@@ -1,5 +1,6 @@
 #include "rover.h"
 #include "string.h"
+#include <stdio.h>
 
 
 static unsigned char bat;
@@ -9,7 +10,7 @@ static char* name;
 static float temp;
 
 void rover_init(){
-	temp = 210;
+	temp = -210;
 	velocity.direction = 0;
 	velocity.magnitude = 25;
 	bat = 99;
@@ -71,25 +72,26 @@ int rover_set_velocity(int direction_, int magnitude_) {
 }
 
 
-int rover_get_temp_size(){
+int rover_get_temp_size() {
 	return sizeof(temp);
 }
-int rover_get_bat_size(){
+int rover_get_bat_size() {
 	return sizeof(bat);
 }
-int rover_get_velocity_size(){
+int rover_get_velocity_size() {
 	return sizeof(velocity);
 }
-
-
-void rover_get_temp_range(){
-
+int rover_get_speed_size() {
+	return sizeof(velocity.magnitude);
 }
-void rover_get_bat_range(){
-
+int rover_get_direction_size() {
+	return sizeof(velocity.direction);
 }
-void rover_get_velocity_range(){
-
+int rover_get_name_size() {
+	return sizeof(name);
+}
+int rover_get_status_size() {
+	return sizeof(status);
 }
 
 

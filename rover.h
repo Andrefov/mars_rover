@@ -20,11 +20,11 @@ int rover_set_velocity(int direction_, int magnitude_);
 
 int rover_get_temp_size();
 int rover_get_velocity_size();
+int rover_get_speed_size();
+int rover_get_direction_size();
 int rover_get_bat_size();
-
-void rover_get_temp_range();
-void rover_get_bat_range();
-void rover_get_velocity_range();
+int rover_get_name_size();
+int rover_get_status_size();
 
 char* rover_get_status();
 void rover_set_status(enum rover_state rover_);

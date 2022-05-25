@@ -24,6 +24,7 @@ int readline(char* line, size_t llen) {
 int main() {
 
 	rover_init();
+	printf("type command or type help or ?\n");
 
 	for (;;) {
 		char line[128];
@@ -34,14 +35,18 @@ int main() {
 		}
 
 		if (strcmp(line, "help") == 0 || strcmp(line, "?") == 0) {
-			printf("temp      <[--get]|--set> min -273.15 C, max 200 C.\n");
-			printf("bat       <[--get]|--set> min 0%, max 100%.\n");
-			printf("velocity  <[--get]|\n");
-			printf("speed     <[--get]|--set> min speed 0, max 50-\n");
-			printf("direction <[--get]|--set> min  0, max 359.\n");
-			printf("name      <[--get]|--set> min characters 1, max 20.\n");
-			printf("status    <[--get]|--set> exploring, sampling, returning, idle.\n");
-			printf("exit\n");
+			printf("command   |      avible range             ||  display units   ||size in bytes\n\n");
+			printf("temp      |--set min -273.15 C, max 200 C.||--units C, K,     ||--size\n");
+			printf("velocity  |                               ||--units D, DN, SN ||--size\n");
+			printf("bat       |--set min 0%, max 100%.                            ||--size\n");
+			printf("speed     |--set min speed 0, max 50.                         ||--size\n");
+			printf("direction |--set min  0, max 359.                             ||--size\n");
+			printf("name      |--set min characters 1, max 20.                    ||--size\n");
+			printf("status    |--set exploring, sampling, returning, idle.        ||--size\n");
+			printf("exit\n\n");
+			printf("temp       C* - Celcious, K - Kelvin                                   \n");
+			printf("velocity   D* - decimal, DN - decimal notation, SN - scientific notation\n");
+			printf(" * - default\n");
 		}
 		else if (strncmp(line, "temp", 4) == 0)
 			shell_temp(line + 4);
@@ -60,6 +65,8 @@ int main() {
 		else if (strcmp(line, "exit") == 0)
 			break;
 	}
+
+	
 	return 0;
 }
 
